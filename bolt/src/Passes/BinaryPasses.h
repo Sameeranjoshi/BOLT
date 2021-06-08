@@ -417,6 +417,19 @@ public:
   void runOnFunctions(BinaryContext &BC) override;
 };
 
+/// Dummy pass
+class DummyPass : public BinaryFunctionPass {
+public:
+  explicit DummyPass(const cl::opt<bool> &PrintPass)
+    : BinaryFunctionPass(PrintPass) {}
+
+  const char *getName() const override {
+    return "dummy-pass";
+  }
+
+  void runOnFunctions(BinaryContext &BC) override;
+};
+
 /// Pass for inlining calls to memcpy using 'rep movsb' on X86.
 class InlineMemcpy : public BinaryFunctionPass {
 public:

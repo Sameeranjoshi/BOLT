@@ -11,6 +11,7 @@
 #include "BinaryPassManager.h"
 #include "Passes/Aligner.h"
 #include "Passes/AllocCombiner.h"
+#include "Passes/DummyPass.h"
 #include "Passes/FrameOptimizer.h"
 #include "Passes/IdenticalCodeFolding.h"
 #include "Passes/IndirectCallPromotion.h"
@@ -531,6 +532,9 @@ void BinaryFunctionPassManager::runAllPasses(BinaryContext &BC) {
     Manager.registerPass(std::make_unique<CheckLargeFunctions>(NeverPrint));
 
   Manager.registerPass(std::make_unique<LowerAnnotations>(NeverPrint));
+
+  // Dummy pass
+  Manager.registerPass(std::make_unique<DummyPass>());
 
   Manager.runPasses();
 }

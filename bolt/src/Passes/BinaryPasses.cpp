@@ -1576,6 +1576,15 @@ void StripRepRet::runOnFunctions(BinaryContext &BC) {
   }
 }
 
+
+void DummyPass::runOnFunctions(BinaryContext &BC) {
+  uint64_t NumPrefixesRemoved = 0;
+  uint64_t NumBytesSaved = 0;
+  for (auto &BFI : BC.getBinaryFunctions()) {
+    outs() << "dummpy-pass - running on : " ;//<< BFI.getPrintName();
+  }
+}
+
 void InlineMemcpy::runOnFunctions(BinaryContext &BC) {
   if (!BC.isX86())
     return;

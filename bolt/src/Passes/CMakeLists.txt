@@ -6,6 +6,7 @@ add_llvm_library(LLVMBOLTPasses
   CallGraph.cpp
   CallGraphWalker.cpp
   DataflowAnalysis.cpp
+  DummyPass.cpp
   DataflowInfoManager.cpp
   ExtTSPReorderAlgorithm.cpp
   FrameAnalysis.cpp
